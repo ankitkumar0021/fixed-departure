@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Filter System</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      #container {
+        display: flex;
+      }
+
+      #sidebar {
+        width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add a right box shadow */
+        border-right: 1px solid #ddd; /* Add a right border */
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      #main-content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      .filtercheckbox {
+        display: grid;
+        /* margin-bottom: 20px; */
+      }
+      .filter-section label {
+        margin-bottom: 5px;
+      }
+
+      input[type="checkbox"],
+      input[type="range"] {
+        margin-right: 10px;
+      }
+
+      input[type="range"] {
+        width: 80%;
+      }
+
+      input[type="range"].budget-slider {
+        background-color: red;
+        color: red; /* Added to change the color of the slider handle */
+      }
+
+      .slider-value {
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      /* cards css */
+      .rigtside {
+        margin-left: 10%;
+        width: 50%;
+      }
+      #card1-container {
+        display: grid;
+        grid-template-columns: 30% 40% 30%; 
+        gap: 20px;
+        margin-top: 20px;
+        height: 300px;
+      }
+
+      /* Add styles for each card */
+      .card1 {
+        width: 100%;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      .card1 img {
+        width: 100%;
+        height: 100%; /* Adjust the height as needed */
+        object-fit: cover;
+      }
+
+      .card1-content {
+        padding: 5px;
+      }
+
+      .days p{
+        font-size: 12px;
+      }
+      .days h5{
+        margin: 0;
+      }
+      .tags {
+          width: 200px;
+          display: flex;
+          justify-content: space-between;
+      }
+      .tags p{
+        border: 1px solid rgb(208, 207, 207);
+        border-radius: 10px;
+        color: #817f7f;
+      }
+      .pricesec {
+        display: flex;
+        flex-direction: column;
+        margin-top: -12px;
+      }
+      .pricesec s {
+        color: #d4312f;
+      }
+      .pricesec button{
+        height: 35px;
+        width: max-content;
+        background-color: #d4312f;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 600;
+      }
+      .pricesec .query{
+        height: 35px;
+        width: max-content;
+        background-color: #fff;
+        border: 1px solid #d4312f;
+        border-radius: 5px;
+        color: #d4312f;
+        font-weight: 600;
+        margin-top: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <table class="view">
+          <tr>
+            <td>Brief View</td>
+            <td>Detailed View</td>
+          </tr>
+        </table>
+        <table style="margin-top: 20px">
+          <tr>
+            <td>With Flight</td>
+            <td>Without Flight</td>
+          </tr>
+        </table>
+        <div class="filter-section filtercheckbox">
+          <h2>Holiday Type</h2>
+          <label><input type="checkbox" /> Customized Holidays</label><br />
+          <label><input type="checkbox" /> Fixes Departure</label><br />
+        </div>
+
+        <div class="filter-section filtercheckbox">
+          <h2>Recommended For</h2>
+          <label><input type="checkbox" /> Adventure</label><br />
+          <label><input type="checkbox" /> Honeymoon</label><br />
+          <label><input type="checkbox" /> Citybreak</label><br />
+          <label><input type="checkbox" />Family with Kids</label>
+        </div>
+
+        <div class="filter-section">
+          <h2>Budget</h2>
+          <input
+            type="range"
+            class="budget-slider"
+            min="0"
+            max="1000"
+            step="50"
+            value="500"
+            id="budgetRange"
+          />
+          <span class="slider-value" id="budgetValue">$500</span><br />
+        </div>
+
+        <div class="filter-section">
+          <h2>Time</h2>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            step="1"
+            value="15"
+            id="timeRange"
+          />
+          <span class="slider-value" id="timeValue">15 days</span>
+        </div>
+      </div>
+
+     <div class="rigtside">
+      
+        <div class="card1" id="card1-container">
+          <img src="./img/agra2.png" alt="Travel Image 1" />
+          <div class="card1-content">
+            <h3 style="margin: 0px;">Best of Delhi</h3>
+            <div class="days">
+                <p>5 Nights and 7 days</p>
+                <h5>Lorem, ipsum.</h5>
+            </div>
+            <div class="tags">
+                <p>city breaks</p>
+                <p>Family and Kids</p>
+            </div>
+            <h3>Customized Holidays</h3>
+          </div>
+          <div class="pricesec">
+            <p>Starting Price Per Adult </p>
+            <s>$1232123</s>
+            <h3 style="font-size: x-large;">$ 123456</h3>
+            <button>View Details</button>
+            <button class="query">Send Query</button>
+          </div>
+        </div>
+        <div class="card1" id="card1-container">
+          <img src="./img/agra2.png" alt="Travel Image 1" />
+          <div class="card1-content">
+            <h3 style="margin: 0px;">Best of Delhi</h3>
+            <div class="days">
+                <p>5 Nights and 7 days</p>
+                <h5>Lorem, ipsum.</h5>
+            </div>
+            <div class="tags">
+                <p>city breaks</p>
+                <p>Family and Kids</p>
+            </div>
+            <h3>Customized Holidays</h3>
+          </div>
+          <div class="pricesec">
+            <p>Starting Price Per Adult </p>
+            <s>$1232123</s>
+            <h3 style="font-size: x-large;">$ 123456</h3>
+            <button>View Details</button>
+            <button class="query">Send Query</button>
+          </div>
+        </div>
+        <div class="card1" id="card1-container">
+          <img src="./img/agra2.png" alt="Travel Image 1" />
+          <div class="card1-content">
+            <h3 style="margin: 0px;">Best of Delhi</h3>
+            <div class="days">
+                <p>5 Nights and 7 days</p>
+                <h5>Lorem, ipsum.</h5>
+            </div>
+            <div class="tags">
+                <p>city breaks</p>
+                <p>Family and Kids</p>
+            </div>
+            <h3>Customized Holidays</h3>
+          </div>
+          <div class="pricesec">
+            <p>Starting Price Per Adult </p>
+            <s>$1232123</s>
+            <h3 style="font-size: x-large;">$ 123456</h3>
+            <button>View Details</button>
+            <button class="query">Send Query</button>
+          </div>
+        </div>
+     
+     </div>
+       
+
+
+    <script>
+      // Add script for dynamic text display for sliders
+      const budgetRange = document.getElementById("budgetRange");
+      const budgetValue = document.getElementById("budgetValue");
+
+      const timeRange = document.getElementById("timeRange");
+      const timeValue = document.getElementById("timeValue");
+
+      budgetRange.addEventListener("input", updateBudgetValue);
+      timeRange.addEventListener("input", updateTimeValue);
+
+      function updateBudgetValue() {
+        budgetValue.textContent = `$${budgetRange.value}`;
+      }
+
+      function updateTimeValue() {
+        timeValue.textContent = `${timeRange.value} days`;
+      }
+    </script>
+  </body>
+</html>
