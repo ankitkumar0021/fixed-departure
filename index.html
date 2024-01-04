@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css"
+    />
     <title>Your Website Title</title>
     <style></style>
   </head>
@@ -39,26 +43,35 @@
     </div>
 
     <div class="search-container">
+      <!-- First search field with search bar input -->
       <div class="search-field">
         <a href="#"><img src="./img/1.png" alt="icons" /></a>
-        <span>From which city are you Travelling </span>
-        <a href="#"><img src="./img/4.png" alt="icons" /></a>
+        <input type="text" placeholder="From Which City" />
+        <!-- <a href="#"><img src="./img/4.png" alt="icons" /></a> -->
       </div>
       <div class="divider"></div>
+
+      <!-- Second search field -->
+      <div class="search-field" id="calendar-trigger">
+        <a href="#"><img src="./img/3.png" alt="calendar" /></a>
+        <input type="text" id="datepicker" placeholder="MM/DD/YYYY" />
+      </div>
+      <div class="divider"></div>
+
+      <!-- Third search field -->
       <div class="search-field">
         <a href="#"><img src="./img/2.png" alt="icons" /></a>
-        <span>Travel Month</span>
+        <input type="text" id="budget" placeholder="500$" />
       </div>
       <div class="divider"></div>
-      <div class="search-field">
-        <a href="#"><img src="./img/3.png" alt="icons" /></a>
-        <span>Budget</span>
-      </div>
-      <div class="divider"></div>
+
+      <!-- Search button -->
       <div class="search-bar">
         <img src="./img/5.png" alt="Search Icon" />
       </div>
     </div>
+
+    <!-- DOMESTIC PACKAGES     -->
     <div class="domestpkg"><h2>DOMESTIC PACKAGES</h2></div>
 
     <div class="card-container">
@@ -142,6 +155,7 @@
       </div>
     </div>
 
+    <!-- INTERNATIONAL PACKAGES -->
     <div class="domestpkg"><h2>INTERNATIONAL PACKAGES</h2></div>
 
     <div class="card-container">
@@ -224,5 +238,8 @@
         </div>
       </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
