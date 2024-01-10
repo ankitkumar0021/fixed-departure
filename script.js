@@ -15,3 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
       picker.show();
     });
 });
+
+function DetailedView() {
+  window.location.assign("./detailedView.html");
+}
+function BriefView() {
+  window.location.assign("./briefview.html");
+}

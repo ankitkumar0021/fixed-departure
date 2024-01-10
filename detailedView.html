@@ -7,8 +7,11 @@
     <style>
       body {
         margin: 0;
+        overflow: 0;
+        box-sizing: border-box;
         font-family: "Arial", sans-serif;
       }
+      
 
       #container {
         display: flex;
@@ -19,8 +22,8 @@
         background-color: #fff;
         padding: 20px;
         height: 100vh;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add a right box shadow */
-        border-right: 1px solid #ddd; /* Add a right border */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        border-right: 1px solid #ddd;
       }
 
       table {
@@ -141,7 +144,54 @@
         font-weight: 600;
         margin-top: 5px;
       }
+      .travel-info {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #f0f0f0;
+            margin-top: 55px;
+            width: 530px;
+            border-radius: 10px;
 
+        }
+
+        .travel-info-item {
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: red; 
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: 0.2s;
+            transition: opacity 0.2s;
+        }
+
+        /* Customize the slider thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
     </style>
   </head>
   <body>
@@ -149,8 +199,8 @@
       <div id="sidebar">
         <table class="view">
           <tr>
-            <td>Brief View</td>
-            <td>Detailed View</td>
+            <td onclick="DetailedView()" class="clickable">Detailed View</td>
+            <td onclick="BriefView()" class="clickable">Brief View</td>
           </tr>
         </table>
         <table style="margin-top: 20px">
@@ -204,7 +254,7 @@
      <div class="rigtside">
       
         <div class="card1" id="card1-container">
-          <img src="./img/agra2.png" alt="Travel Image 1" />
+          <a href="./Elegant Purposal/index.html"><img src="./img/agra2.png" alt="Travel Image 1" /></a>
           <div class="card1-content">
             <h3 style="margin: 0px;">Best of Delhi</h3>
             <div class="days">
@@ -216,6 +266,65 @@
                 <p>Family and Kids</p>
             </div>
             <h3>Customized Holidays</h3>
+            <div class="travel-info">
+              <div class="travel-info-item">
+                  <div class="icon">🏨</div>
+                  <div>Hotel</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🏞️</div>
+                  <div>Sightseeing</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🚗</div>
+                  <div>Transfer</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🍲</div>
+                  <div>Meals</div>
+              </div>
+          </div>
+          </div>
+          <div class="pricesec">
+            <p>Starting Price Per Adult </p>
+            <s>$1232123</s>
+            <h3 style="font-size: x-large;">$ 123456</h3>
+            <button>View Details</button>
+            <button class="query">Send Query</button>
+          </div>
+        </div>
+
+        <div class="card1" id="card1-container">
+          <a href="./Elegant Purposal/index.html"><img src="./img/agra2.png" alt="Travel Image 1" /></a>
+          <div class="card1-content">
+            <h3 style="margin: 0px;">Best of Delhi</h3>
+            <div class="days">
+                <p>5 Nights and 7 days</p>
+                <h5>Lorem, ipsum.</h5>
+            </div>
+            <div class="tags">
+                <p>city breaks</p>
+                <p>Family and Kids</p>
+            </div>
+            <h3>Customized Holidays</h3>
+            <div class="travel-info">
+              <div class="travel-info-item">
+                  <div class="icon">🏨</div>
+                  <div>Hotel</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🏞️</div>
+                  <div>Sightseeing</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🚗</div>
+                  <div>Transfer</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🍲</div>
+                  <div>Meals</div>
+              </div>
+          </div>
           </div>
           <div class="pricesec">
             <p>Starting Price Per Adult </p>
@@ -226,7 +335,7 @@
           </div>
         </div>
         <div class="card1" id="card1-container">
-          <img src="./img/agra2.png" alt="Travel Image 1" />
+          <a href="./Elegant Purposal/index.html"><img src="./img/agra2.png" alt="Travel Image 1" /></a>
           <div class="card1-content">
             <h3 style="margin: 0px;">Best of Delhi</h3>
             <div class="days">
@@ -238,6 +347,24 @@
                 <p>Family and Kids</p>
             </div>
             <h3>Customized Holidays</h3>
+            <div class="travel-info">
+              <div class="travel-info-item">
+                  <div class="icon">🏨</div>
+                  <div>Hotel</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🏞️</div>
+                  <div>Sightseeing</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🚗</div>
+                  <div>Transfer</div>
+              </div>
+              <div class="travel-info-item">
+                  <div class="icon">🍲</div>
+                  <div>Meals</div>
+              </div>
+          </div>
           </div>
           <div class="pricesec">
             <p>Starting Price Per Adult </p>
@@ -247,30 +374,8 @@
             <button class="query">Send Query</button>
           </div>
         </div>
-        <div class="card1" id="card1-container">
-          <img src="./img/agra2.png" alt="Travel Image 1" />
-          <div class="card1-content">
-            <h3 style="margin: 0px;">Best of Delhi</h3>
-            <div class="days">
-                <p>5 Nights and 7 days</p>
-                <h5>Lorem, ipsum.</h5>
-            </div>
-            <div class="tags">
-                <p>city breaks</p>
-                <p>Family and Kids</p>
-            </div>
-            <h3>Customized Holidays</h3>
-          </div>
-          <div class="pricesec">
-            <p>Starting Price Per Adult </p>
-            <s>$1232123</s>
-            <h3 style="font-size: x-large;">$ 123456</h3>
-            <button>View Details</button>
-            <button class="query">Send Query</button>
-          </div>
-        </div>
-     
-     </div>
+       
+      </div>
        
 
 
@@ -293,5 +398,6 @@
         timeValue.textContent = `${timeRange.value} days`;
       }
     </script>
+    <script src="script.js"></script>
   </body>
 </html>

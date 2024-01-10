@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Filter System</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+      
+
+      #container {
+        display: flex;
+      }
+
+      #sidebar {
+        width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        border-right: 1px solid #ddd;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      #main-content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      .filtercheckbox {
+        display: grid;
+        /* margin-bottom: 20px; */
+      }
+      .filter-section label {
+        margin-bottom: 5px;
+      }
+
+      input[type="checkbox"],
+      input[type="range"] {
+        margin-right: 10px;
+      }
+
+      input[type="range"] {
+        width: 80%;
+      }
+
+      input[type="range"].budget-slider {
+        background-color: red;
+        color: red; /* Added to change the color of the slider handle */
+      }
+
+      .slider-value {
+        display: inline-block;
+        margin-left: 10px;
+      }
+      .container2 {
+        margin-left: 10%;
+        width: 50%;
+}
+
+.sidebar {
+    width: 200px; /* Adjust width as needed */
+    background-color: #f0f0f0; /* Sidebar background color */
+    padding: 20px;
+}
+
+.table-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 10px;
+}
+
+.data-table th{
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    font-size: 20px;
+}
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    border-bottom: none;
+    border-top: none;
+}
+
+.bold-header {
+    font-weight: bold;
+}
+
+.data-table td:nth-child(2), th:nth-child(2) {
+    background-color: #f3f4f8; /* Green background color */
+}
+
+     /* Style to make the background color green when clicked */
+     .clickable {
+        cursor: pointer;
+      }
+
+      .clickable:hover {
+        background-color: rgb(94, 94, 94);
+        color: #fff;
+      }
+
+      .clicked {
+        background-color: rgb(94, 94, 94);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <table class="view">
+          <tr>
+            <td onclick="DetailedView()" class="clickable">Detailed View</td>
+            <td onclick="BriefView()" class="clickable">Brief View</td>
+          </tr>
+        </table>
+        <table style="margin-top: 20px">
+          <tr>
+            <td>With Flight</td>
+            <td>Without Flight</td>
+          </tr>
+        </table>
+        <div class="filter-section filtercheckbox">
+          <h2>Holiday Type</h2>
+          <label><input type="checkbox" /> Customized Holidays</label><br />
+          <label><input type="checkbox" /> Fixes Departure</label><br />
+        </div>
+
+        <div class="filter-section filtercheckbox">
+          <h2>Recommended For</h2>
+          <label><input type="checkbox" /> Adventure</label><br />
+          <label><input type="checkbox" /> Honeymoon</label><br />
+          <label><input type="checkbox" /> Citybreak</label><br />
+          <label><input type="checkbox" />Family with Kids</label>
+        </div>
+
+        <div class="filter-section">
+          <h2>Budget</h2>
+          <input
+            type="range"
+            class="budget-slider"
+            min="0"
+            max="1000"
+            step="50"
+            value="500"
+            id="budgetRange"
+          />
+          <span class="slider-value" id="budgetValue">$500</span><br />
+        </div>
+
+        <div class="filter-section">
+          <h2>Time</h2>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            step="1"
+            value="15"
+            id="timeRange"
+          />
+          <span class="slider-value" id="timeValue">15 days</span>
+        </div>
+      </div>
+
+
+      <div class="container2">
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                        <th>Column 3</th>
+                        <th>Column 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="no-border">Row 1</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 2</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 3</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 4</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 5</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 6</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                    <tr>
+                        <td class="no-border">Row 7</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+      // Add script for dynamic text display for sliders
+      const budgetRange = document.getElementById("budgetRange");
+      const budgetValue = document.getElementById("budgetValue");
+
+      const timeRange = document.getElementById("timeRange");
+      const timeValue = document.getElementById("timeValue");
+
+      budgetRange.addEventListener("input", updateBudgetValue);
+      timeRange.addEventListener("input", updateTimeValue);
+
+      function updateBudgetValue() {
+        budgetValue.textContent = `$${budgetRange.value}`;
+      }
+
+      function updateTimeValue() {
+        timeValue.textContent = `${timeRange.value} days`;
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
