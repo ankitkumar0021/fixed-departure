@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seat Bookings</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .grid-container {
+        width: 70%;
+        display: grid;
+        grid-template-columns: 33% auto;
+        gap: 1px;
+        border: 1px solid rgb(213, 213, 213);
+      }
+
+      .grid-item {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .row1 {
+        background: #574d4b;
+        color: white;
+      }
+
+      .row2 {
+        background: #f9b32f;
+        color: white;
+      }
+
+      .row3 {
+        background: rgb(213, 213, 213);
+        color: white;
+      }
+
+      .dropdown-container {
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px;
+      }
+
+      select {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      /* Additional styling for dropdowns */
+      .month-dropdown {
+        color: rgb(0, 0, 0);
+      }
+
+      .year-dropdown {
+        color: rgb(0, 0, 0);
+      }
+
+      .date-dropdown {
+        /* background-color: rgb(213, 213, 213); */
+        color: rgb(0, 0, 0);
+      }
+      .datemonths {
+        width: 75%;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      #calendar-container {
+        margin-top: 20px;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-left: -1000px">Tour Price</h1>
+    <div class="grid-container">
+      <div class="col1">
+        <div class="grid-item row1">Row 1</div>
+        <div class="grid-item row2">Row 2</div>
+        <div class="grid-item row3">Row 3</div>
+        <div class="grid-item row4">Row 4</div>
+      </div>
+      <div class="col2">
+        <div class="grid-item row1">Row 1</div>
+        <div class="grid-item row2">Row 2</div>
+        <div class="grid-item row3">Row 3</div>
+        <div class="grid-item row4">Row 4</div>
+      </div>
+    </div>
+    <p style="font-size: 20px; margin-left: -900px">
+      <span style="font-weight: 600">Note:</span> GST@5.00% applicable.
+    </p>
+    <div class="datemonths">
+      <div class="dropdown-container">
+        <p style="font-size: xx-large">Seats Availability in</p>
+        <select id="month" class="month-dropdown"></select>
+        <select id="year" class="year-dropdown"></select>
+        <select id="departure-date" class="date-dropdown">
+          <option value="" disabled selected>Select Departure Date</option>
+          <option value="1">21/04/2001 (vacant)</option>
+          <option value="1">21/04/2001 (vacant)</option>
+          <option value="1">21/04/2001 (vacant)</option>
+          <option value="1">21/04/2001 (vacant)</option>
+          <option value="1">21/04/2001 (vacant)</option>
+          <option value="1">21/04/2001 (vacant)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="calendar-container">
+      <div id="month-selector">
+        <select id="month" onchange="generateCalendar()">
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+        </select>
+      </div>
+
+      <table id="calendar">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Populate months dropdown
+      const monthDropdown = document.getElementById("month");
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      months.forEach((month) => {
+        const option = document.createElement("option");
+        option.value = month;
+        option.text = month;
+        monthDropdown.add(option);
+      });
+
+      // Populate years dropdown (example: from 2022 to 2030)
+      const yearDropdown = document.getElementById("year");
+      const currentYear = new Date().getFullYear();
+
+      for (let year = currentYear; year <= currentYear + 8; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        yearDropdown.add(option);
+      }
+
+      //seat bookings
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarBody = document.querySelector("#calendar tbody");
+        const monthSelector = document.querySelector("#month");
+
+        function generateCalendar() {
+          const selectedMonth = parseInt(monthSelector.value, 10);
+          const daysInMonth = new Date(2024, selectedMonth + 1, 0).getDate();
+
+          // Clear previous content
+          calendarBody.innerHTML = "";
+
+          let currentDate = 1;
+          const totalWeeks = Math.ceil(
+            (daysInMonth + new Date(2024, selectedMonth, 1).getDay()) / 7
+          );
+
+          for (let week = 0; week < totalWeeks; week++) {
+            const row = calendarBody.insertRow();
+
+            for (let day = 0; day < 7; day++) {
+              const cell = row.insertCell();
+
+              if (
+                week === 0 &&
+                day < new Date(2024, selectedMonth, 1).getDay()
+              ) {
+                // Add empty cells before the first day of the month
+                cell.textContent = "";
+              } else if (currentDate <= daysInMonth) {
+                // Add day values
+                cell.textContent = currentDate;
+                currentDate++;
+              }
+            }
+          }
+        }
+
+        // Call the function to initialize the calendar
+        generateCalendar();
+      });
+    </script>
+  </body>
+</html>
